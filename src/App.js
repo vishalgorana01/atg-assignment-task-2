@@ -1,24 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import { UserContext } from './components/UserContext';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import defaultprofilephoto from './assets/images/download 2.png'
 
 function App() {
+  const [userid, setuserid] = useState({
+    id: null,
+    username: null
+  })
+  const [data, setData] = useState([])
+
+  const getData = async () => {
+    await axios.get('https://602e7c2c4410730017c50b9d.mockapi.io/users')
+      .then((resp) => {
+        setData(resp.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [data])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <UserContext.Provider value={{ userid, setuserid, data, setData }}>
+        <Home />
+      </UserContext.Provider>
+    </>
   );
 }
 
