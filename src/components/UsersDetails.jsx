@@ -15,7 +15,10 @@ function UsersDetails() {
                         <span className='flex relative items-center justify-center w-full bg-blue-400 text-black py-3'>
                             <h1 className='font-semibold text-lg'>USERS DETAILS</h1>
                             <MdOutlineClose className='absolute inline-block text-xl font-semibold text-white right-3 md:hidden'
-                                onClick={() => setuserid(null)} />
+                                onClick={() => setuserid({
+                                    username: null,
+                                    id: null
+                                })} />
                         </span>
 
                         <span className='flex gap-y-3.5 flex-col items-center justify-center w-full'>
@@ -60,7 +63,7 @@ function UsersDetails() {
 
 
     return (
-        <span className={`flex bg-white duration-300 min-h-screen absolute ${userid != null ? 'translate-x-0' : 'translate-x-full'} gap-y-5 flex-col items-center justify-center px-3.5 py-3.5 sm:py-0 w-full sm:px-6 md:translate-x-0 md:relative sm:min-h-fit`}>
+        <span className={`flex bg-white duration-300 h-screen absolute ${userid.id != null ? 'translate-x-0' : 'translate-x-full'} gap-y-5 flex-col items-center justify-center px-3.5 py-3.5 sm:py-0 w-full sm:px-6 md:translate-x-0 md:relative md:h-auto`}>
 
             {
                 userid.id != null ?
