@@ -37,7 +37,7 @@ function UsersList() {
                 <h1 className='font-semibold text-lg'>USERS LIST</h1>
             </span>
 
-            <ul className='flex gap-y-1.5 flex-col items-center justify-start w-full max-h-[32rem] overflow-y-scroll'>
+            <ul className='flex gap-y-1.5 flex-col items-center justify-start w-full max-h-screen overflow-y-scroll md:max-h-[32rem]'>
                 {list}
             </ul>
         </span>
